@@ -1,0 +1,25 @@
+[Unit]
+Description="Custom bag recorder"
+#StartLimitBurst=2
+#StartLimitIntervalSec=60
+
+[Service]
+#User=camille
+#Group=camille
+Type=exec
+Environment="ROS_VERSION=2"
+Environment="ROS_PYTHON_VERSION=3"
+Environment="AMENT_PREFIX_PATH=/opt/ros/galactic"
+Environment="PYTHONPATH=/opt/ros/galactic/lib/python3.8/site-packages"
+Environment="_colcon_cd_root=/opt/ros/galactic/"
+Environment="LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/galactic/opt/yaml_cpp_vendor/lib:/opt/ros/galactic/opt/rviz_ogre_vendor/lib:/opt/ros/galactic/lib/x86_64-linux-gnu:/opt/ros/galactic/lib"
+Environment="ROS_LOCALHOST_ONLY=0"
+Environment="PATH=/home/camille:/opt/ros/galactic/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+Environment="ROS_DISTRO=galactic"
+#ExecStart=/bin/bash -c 'source /opt/ros/galactic/setup.bash && source /home/camille/elodie_ws/install/setup.bash && ros2 launch daemon_bag_test_pkg daemon_bag_record.launch.py'
+ExecStart=/home/camille/Bureau/script_launcher.sh
+Restart=on-failure
+#RestartSec=10
+
+[Install]
+WantedBy=default.target
